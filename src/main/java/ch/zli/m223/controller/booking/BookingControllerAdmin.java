@@ -49,8 +49,8 @@ public class BookingControllerAdmin {
         return bookingService.getBookingByUserId(userId);
     }
 
-    @GetMapping("/{date}")
-    List<BookingImpl> getBookingByDate(@RequestParam("date") String date){
+    @GetMapping("/date/{date}")
+    List<BookingImpl> getBookingByDate(@PathVariable("date") String date){
         return bookingService.getBookingByDate(date);
     }
     
