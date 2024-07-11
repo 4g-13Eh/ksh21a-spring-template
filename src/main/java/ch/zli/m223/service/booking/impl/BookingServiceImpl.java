@@ -37,6 +37,11 @@ public class BookingServiceImpl implements BookingService{
     }
 
     @Override
+    public List<BookingImpl> getBookingByUserId(Long userId){
+        return bookingRepository.findByUserId(userId);
+    }
+
+    @Override
     public BookingImpl createBooking(Long userid, String bookingDate, Booking.Duration duration){
         BookingImpl booking = new BookingImpl();
         booking.setUserId(userid);

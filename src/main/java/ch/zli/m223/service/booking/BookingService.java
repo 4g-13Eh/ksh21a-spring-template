@@ -9,6 +9,7 @@ public interface BookingService {
     List<Booking> getAllBookings();
     Booking getBookingByBookingId(Long id);
     List<BookingImpl> getBookingByDate(String date);
+    List<BookingImpl> getBookingByUserId(Long userId);
     BookingImpl createBooking(Long userid, String bookingDate, Booking.Duration duration);
     public Booking createBookingWithStatus(Long userid, String bookingDate, Booking.Duration duration, Booking.BookingStatus status);
     public BookingImpl updateBookingStatus(Long id, Booking.BookingStatus status);
