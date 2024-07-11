@@ -20,7 +20,6 @@ import ch.zli.m223.model.Booking;
 import ch.zli.m223.model.impl.BookingImpl;
 import ch.zli.m223.service.booking.BookingService;
 import ch.zli.m223.service.user.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -62,7 +61,7 @@ public class BookingControllerAdmin {
     }
 
     @PatchMapping("/{id}")
-    public BookingImpl updateBookingStatus(@PathVariable("id") Long id, StatusUpdateDto status){
+    public BookingImpl updateBookingStatus(@PathVariable("id") Long id, @RequestBody StatusUpdateDto status){
         return bookingService.updateBookingStatus(id, status.getStatus());
     }
 
