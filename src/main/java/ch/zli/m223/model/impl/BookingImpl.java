@@ -24,15 +24,15 @@ public class BookingImpl implements Booking{
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "duration")
-    private Long duration;
+    private Duration duration;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "booking_status")
-    private Long bookingStatus;
+    private BookingStatus bookingStatus;
 
     public BookingImpl() {}
 
-    public BookingImpl(Long userId, String bookingDate, Long duration, Long bookingStatus) {
+    public BookingImpl(Long userId, String bookingDate, Duration duration, BookingStatus bookingStatus) {
         this.userId = userId;
         this.bookingDate = bookingDate;
         this.duration = duration;
@@ -55,12 +55,12 @@ public class BookingImpl implements Booking{
     }
 
     @Override
-    public Long getDuration() {
+    public Duration getDuration() {
         return duration;
     }
 
     @Override
-    public Long getBookingStatus() {
+    public BookingStatus getBookingStatus() {
         return bookingStatus;
     }
 
@@ -75,13 +75,12 @@ public class BookingImpl implements Booking{
     }
 
     @Override
-    public void setDuration(Long duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 
     @Override
-    public void setBookingStatus(Long bookingStatus) {
+    public void setBookingStatus(BookingStatus bookingStatus) {
         this.bookingStatus = bookingStatus;
     }
-
 }

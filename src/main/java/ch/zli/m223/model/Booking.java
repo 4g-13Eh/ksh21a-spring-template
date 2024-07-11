@@ -5,13 +5,13 @@ public interface Booking {
         public Long getId();
         public Long getUserId();
         public String getBookingDate();
-        public Long getDuration();
-        public Long getBookingStatus();
+        public Duration getDuration();
+        public BookingStatus getBookingStatus();
 
         public void setUserId(Long userId);
         public void setBookingDate(String bookingDate);
-        public void setDuration(Long duration);
-        public void setBookingStatus(Long bookingStatus);
+        public void setDuration(Duration duration);
+        public void setBookingStatus(BookingStatus bookingStatus);
 
         enum BookingStatus {
             PENDING,
