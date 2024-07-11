@@ -15,6 +15,8 @@ import ch.zli.m223.model.Booking;
 import ch.zli.m223.model.impl.BookingImpl;
 import ch.zli.m223.service.booking.BookingService;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -38,6 +40,12 @@ public class BookingControllerAdmin {
     List<BookingImpl> getBookingByUserId(@PathVariable("userId") Long userId){
         return bookingService.getBookingByUserId(userId);
     }
+
+    @GetMapping("/{date}")
+    List<BookingImpl> getBookingByDate(@RequestParam("date") String date){
+        return bookingService.getBookingByDate(date);
+    }
+    
 
     @PostMapping
     public BookingImpl createBooking(@RequestBody Long userid, String bookingDate, Booking.Duration duration){
