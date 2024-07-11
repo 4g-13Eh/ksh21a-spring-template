@@ -17,6 +17,10 @@ public class BookingServiceImpl implements BookingService{
     @Autowired
     private BookingRepository bookingRepository;
 
+    public BookingServiceImpl(BookingRepository bookingRepository){
+        this.bookingRepository = bookingRepository;
+    }
+
     @Override
     public List<Booking> getAllBookings() {
         return new ArrayList<Booking>(bookingRepository.findAll());
@@ -24,16 +28,38 @@ public class BookingServiceImpl implements BookingService{
 
     @Override
     public Booking getBookingByBookingId(Long id){
-        return bookingRepository.findById(id).orElse(null);
+        return bookingRepository.findById(id).orElseThrow(()-> new RuntimeException("Booking not found"));
     }
 
     @Override
-    public BookingImpl createBooking(BookingImpl booking){
+    public List<BookingImpl> getBookingByDate(String date){
+        return bookingRepository.findByBookingDate(date);
+    }
+
+    @Override
+    public BookingImpl createBooking(Long userid, String bookingDate, Booking.Duration duration){
+        BookingImpl booking = new BookingImpl();
+        booking.setUserId(userid);
+        booking.setBookingDate(bookingDate);
+        booking.setDuration(duration);
+        booking.setBookingStatus(Booking.BookingStatus.PENDING);
         return bookingRepository.save(booking);
     }
 
     @Override
-    public BookingImpl updateBooking(BookingImpl booking){
+    public Booking createBookingWithStatus(Long userid, String bookingDate, Booking.Duration duration, Booking.BookingStatus status){
+        BookingImpl booking = new BookingImpl();
+        booking.setUserId(userid);
+        booking.setBookingDate(bookingDate);
+        booking.setDuration(duration);
+        booking.setBookingStatus(status);
+        return bookingRepository.save(booking);
+    }
+
+    @Override
+    public BookingImpl updateBookingStatus(Long id, Booking.BookingStatus status){
+        BookingImpl booking = bookingRepository.findById(id).orElseThrow(()-> new RuntimeException("Booking not found"));
+        booking.setBookingStatus(status);
         return bookingRepository.save(booking);
     }
 

@@ -8,7 +8,9 @@ import ch.zli.m223.model.impl.BookingImpl;
 public interface BookingService {
     List<Booking> getAllBookings();
     Booking getBookingByBookingId(Long id);
-    BookingImpl createBooking(BookingImpl booking);
-    BookingImpl updateBooking(BookingImpl booking);
+    List<BookingImpl> getBookingByDate(String date);
+    BookingImpl createBooking(Long userid, String bookingDate, Booking.Duration duration);
+    public Booking createBookingWithStatus(Long userid, String bookingDate, Booking.Duration duration, Booking.BookingStatus status);
+    public BookingImpl updateBookingStatus(Long id, Booking.BookingStatus status);
     void deleteBooking(Long id);
 }
