@@ -3,7 +3,8 @@ package ch.zli.m223.model.impl;
 import ch.zli.m223.model.Booking;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ForeignKey;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
@@ -14,19 +15,19 @@ public class BookingImpl implements Booking{
     @GeneratedValue
     private Long id;
 
-    @ForeignKey
-    @Column(nullable = false)
+    @Column(nullable = false, name = "user_id")
     private Long userId;
 
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, name = "booking_date")
     private String bookingDate;
 
-    @ForeignKey
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, name = "duration")
     private Long duration;
 
-    @ForeignKey
-    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, name = "booking_status")
     private Long bookingStatus;
 
 
