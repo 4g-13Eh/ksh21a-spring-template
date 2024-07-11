@@ -18,7 +18,6 @@ public class BookingImpl implements Booking{
     @Column(nullable = false, name = "user_id")
     private Long userId;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "booking_date")
     private String bookingDate;
 
