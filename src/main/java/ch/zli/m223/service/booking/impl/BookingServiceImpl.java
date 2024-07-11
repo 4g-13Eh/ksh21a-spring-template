@@ -10,6 +10,7 @@ import ch.zli.m223.model.Booking;
 import ch.zli.m223.model.impl.BookingImpl;
 import ch.zli.m223.repository.BookingRepository;
 import ch.zli.m223.service.booking.BookingService;
+import ch.zli.m223.service.booking.exception.BookingNotFound;
 
 @Service
 public class BookingServiceImpl implements BookingService{
@@ -28,7 +29,7 @@ public class BookingServiceImpl implements BookingService{
 
     @Override
     public Booking getBookingByBookingId(Long id){
-        return bookingRepository.findById(id).orElseThrow(()-> new RuntimeException("Booking not found"));
+        return bookingRepository.findById(id).orElseThrow(()-> new BookingNotFound());
     }
 
     @Override
