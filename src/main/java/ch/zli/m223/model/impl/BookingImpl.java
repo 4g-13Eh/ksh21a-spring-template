@@ -30,6 +30,7 @@ public class BookingImpl implements Booking{
     @Column(nullable = false, name = "booking_status")
     private Long bookingStatus;
 
+    public BookingImpl() {}
 
     public BookingImpl(Long userId, String bookingDate, Long duration, Long bookingStatus) {
         this.userId = userId;
@@ -61,6 +62,26 @@ public class BookingImpl implements Booking{
     @Override
     public Long getBookingStatus() {
         return bookingStatus;
+    }
+
+    @Override
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    @Override
+    public void setDuration(Long duration) {
+        this.duration = duration;
+    }
+
+    @Override
+    public void setBookingStatus(Long bookingStatus) {
+        this.bookingStatus = bookingStatus;
     }
 
 }
