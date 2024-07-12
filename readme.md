@@ -21,3 +21,6 @@ Sie finden die passenden Postman-Scripts im './src/test/postman' Verzeichnis.
 - [Login](./src/test/postman/Login.postman_collection.json)
 - [Admin](./src/test/postman/Admin.postman_collection.json)
 - [Member](./src/test/postman/Member.postman_collection.json)
+
+## OpenAPI Dokumentation
+Die OpenAPI Dokumentation finden sie unter [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html).
