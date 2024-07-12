@@ -40,14 +40,13 @@ public class BookingServiceImpl implements BookingService{
 
 
     @Override
-    public Booking getBookingMemberByBookingId(Long bookingId, Principal principal){
+    public Booking getBookingMemberByBookingId(Long id, Principal principal){
         AppUser user = userService.getUserByName(principal.getName());
         Long senderUserId = user.getId();
-        Booking booking = bookingRepository.findById(bookingId).orElse(null);
+        Booking booking = bookingRepository.findById(id).orElseThrow(()-> new BookingNotFound());
         Long searchedBookingUserId = booking.getUserId();
-        System.out.println("Sender: " + senderUserId + " Searched: " + searchedBookingUserId);
         if(senderUserId == searchedBookingUserId){
-            return bookingRepository.findById(bookingId).orElseThrow(()-> new BookingNotFound());
+            return booking;
         } else {
             throw new BookingNotFound();
         }
