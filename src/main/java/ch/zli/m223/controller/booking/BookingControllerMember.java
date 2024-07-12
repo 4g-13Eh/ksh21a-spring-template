@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-
-
 @RestController
 @RequestMapping("/api/v1/member/bookings")
 public class BookingControllerMember {
@@ -34,13 +32,13 @@ public class BookingControllerMember {
     private UserService userService;
 
     @GetMapping("/{bookingId}")
-    Booking getBookingByBookingId(@PathVariable("bookingId") Long bookingId){
-        return bookingService.getBookingByBookingId(bookingId);
+    Booking getBookingByBookingId(@PathVariable("bookingId") Long bookingId, Principal principal){
+        return bookingService.getBookingMemberByBookingId(bookingId, principal);
     }
 
-    @GetMapping
-    List<BookingImpl> getBookingByUserId(@PathVariable("userId") Long userId){
-        return bookingService.getBookingByUserId(userId);
+    @GetMapping("/user/{userId}")
+    List<BookingImpl> getBookingByUserId(@PathVariable("userId") Long userId, Principal principal){
+        return bookingService.getMemberBookingsByUserId(userId, principal);
     }
 
     @PostMapping
@@ -50,8 +48,7 @@ public class BookingControllerMember {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBooking(@PathVariable("id") Long id){
-        bookingService.deleteBooking(id);
+    public void deleteBooking(@PathVariable("id") Long id, Principal principal){
+        bookingService.deleteMemberBooking(id, principal);
     }
-    
 }
