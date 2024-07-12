@@ -33,17 +33,12 @@ public class BookingControllerMember {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    List<Booking> getAllBookings(){
-        return bookingService.getAllBookings();
-    }
-
     @GetMapping("/{bookingId}")
     Booking getBookingByBookingId(@PathVariable("bookingId") Long bookingId){
         return bookingService.getBookingByBookingId(bookingId);
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping
     List<BookingImpl> getBookingByUserId(@PathVariable("userId") Long userId){
         return bookingService.getBookingByUserId(userId);
     }
